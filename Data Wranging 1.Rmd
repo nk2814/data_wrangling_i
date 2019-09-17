@@ -1,5 +1,5 @@
 ---
-title: "Data Wrangling 1"
+title: "Data Import"
 author: "Naama Kipperman"
 date: "9/17/2019"
 output: github_document
@@ -10,3 +10,33 @@ knitr::opts_chunk$set(echo = TRUE)
 
 library(tidyverse)
 ```
+
+## Load in FAS data set
+
+``` {r} 
+
+litters_data = read_csv(file="./data/FAS_litters.csv")
+
+# the first thing you want to do when you import a dataset is print it - gives you a sense of what's going on in the dataset
+
+litters_data
+
+# as a next step, we'll often rewrite variable names
+
+litters_data = janitor::clean_names(litters_data)
+
+```
+
+# Load in FAS pups dataset
+
+``` {r} 
+
+# relative path
+pups_data = read_csv(file="./data/FAS_pups.csv")
+
+# clean it up
+
+pups_data = janitor::clean_names(pups_data)
+
+```
+
