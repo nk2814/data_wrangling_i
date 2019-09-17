@@ -9,6 +9,7 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 
 library(tidyverse)
+library(readxl)
 ```
 
 ## Load in FAS data set
@@ -57,4 +58,21 @@ litters_data = read_csv(file = "./data/FAS_litters.csv",
 
 # Read in an excel sheet
 
+```{r}
+
+mlb11_data=read_excel(
+  path="./data/mlb11.xlsx")
+```
+
+# Read in SAS
+
+```{r}
+pulse_data= haven::read_sas("./data/public_pulse_data.sas7bdat")
+```
+
+# Read in using read.csv instead of read_csv
+
+```{r}
+litters_data = read_csv(file="./data/FAS_litters.csv")
+```
 
