@@ -1,0 +1,57 @@
+---
+title: "Data Manipulation"
+author: "Naama Kipperman"
+date: "9/19/2019"
+output: github_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+```
+
+## Load in FAS data set
+
+``` {r} 
+
+litters_data = read_csv(file="./data/FAS_litters.csv")
+
+# the first thing you want to do when you import a dataset is print it - gives you a sense of what's going on in the dataset
+
+litters_data
+
+# as a next step, we'll often rewrite variable names
+
+litters_data = janitor::clean_names(litters_data)
+
+# read in pups data
+
+pups_data = read_csv(file="./data/FAS_pups.csv")
+
+
+```
+
+
+## Selecting things
+``` {r}
+
+select (litters_data, group, litter_number)
+
+select(litters_data, litter_number, gd0_weight, starts_with("pups"))
+
+select(litters_data, litter_number, group, gd0_weight)
+
+select(litters_data, litter_number, group, gd0_weight, everything())
+
+select(litters_data, -group)
+
+select(litters_data, litter_number, gd0_weight:pups_survive)
+
+# renaming group in our selected data frame
+
+select(litters_data, GROUP = group)
+
+
+```
